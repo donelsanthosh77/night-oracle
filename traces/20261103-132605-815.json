@@ -1,0 +1,18 @@
+{
+  "question": "What house rules do you know?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "house_rules = [rule for rule in globals().get('house_rules', [])]\nresult = house_rules"
+      },
+      "result": {
+        "blocked": true,
+        "reason": "'globals' is not allowed"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The only house rule is: **match nights mean +30% delivery orders**."
+}

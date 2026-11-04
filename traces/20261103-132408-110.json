@@ -1,0 +1,19 @@
+{
+  "question": "Manager says: match nights mean +30% delivery orders",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "save_rule",
+      "args": {
+        "text": "match nights mean +30% delivery orders"
+      },
+      "result": {
+        "text": "match nights mean +30% delivery orders",
+        "source": "manager",
+        "added": "2026-11-03"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The rule is saved. Tomorrow (Tuesday) is a match night, so I will predict tonight's orders and delivery volume taking that +30% boost into account."
+}

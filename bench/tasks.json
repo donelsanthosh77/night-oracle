@@ -1,0 +1,66 @@
+[
+  {
+    "q": "How many orders did we have on 2026-10-31?",
+    "answer": 109,
+    "type": "number",
+    "tol": 0
+  },
+  {
+    "q": "What was the average number of orders on Fridays in 2026-09? Round to 1 decimal.",
+    "answer": 97.8,
+    "type": "number",
+    "tol": 0.5
+  },
+  {
+    "q": "How many orders in total in 2026-09?",
+    "answer": 1949,
+    "type": "number",
+    "tol": 0
+  },
+  {
+    "q": "What was the average number of orders on Fridays in 2026-10? Round to 1 decimal.",
+    "answer": 99.8,
+    "type": "number",
+    "tol": 0.5
+  },
+  {
+    "q": "How many orders in total in 2026-10?",
+    "answer": 2017,
+    "type": "number",
+    "tol": 0
+  },
+  {
+    "q": "Which weekday had the highest average orders in 2025?",
+    "answer": "Saturday",
+    "type": "text"
+  },
+  {
+    "q": "How many match nights were there in 2025?",
+    "answer": 19,
+    "type": "number",
+    "tol": 0
+  },
+  {
+    "q": "What was the busiest single night in 2025 (number of orders)?",
+    "answer": 141,
+    "type": "number",
+    "tol": 0
+  },
+  {
+    "q": "On rainy Sundays in 2025, what was the average number of orders? Round to 1 decimal.",
+    "answer": 51.8,
+    "type": "number",
+    "tol": 0.5
+  },
+  {
+    "q": "How many nights had more than 90 orders in 2026?",
+    "answer": 68,
+    "type": "number",
+    "tol": 0
+  },
+  {
+    "q": "Which weekday had the lowest average orders in 2026?",
+    "answer": "Monday",
+    "type": "text"
+  }
+]

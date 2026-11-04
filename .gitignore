@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.gguf
+.env
+data/clean/
+data/rules.json
+.pytest_cache/

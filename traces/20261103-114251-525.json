@@ -1,0 +1,28 @@
+{
+  "question": "How busy is Friday?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "predict_night",
+      "args": {
+        "day": "Friday"
+      },
+      "result": {
+        "day": "Friday",
+        "weekday": "Friday",
+        "rain": false,
+        "match": false,
+        "expected_orders": 94,
+        "range_90": [
+          81,
+          108
+        ],
+        "p_busy_percent": 70,
+        "capacity": 90,
+        "call_extra_staff": true
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Friday is expected to have between 81 and 108 orders (90% confidence). It is predicted to be 70% busy, so extra staff will be needed."
+}

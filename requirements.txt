@@ -1,0 +1,5 @@
+numpy>=2.0
+pandas>=2.2
+requests>=2.31
+mcp>=2,<3
+pytest>=8

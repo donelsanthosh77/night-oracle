@@ -1,0 +1,28 @@
+{
+  "tools_listed": [
+    "predict_night",
+    "ask_data",
+    "save_rule"
+  ],
+  "call": {
+    "tool": "predict_night",
+    "args": {
+      "day": "Friday",
+      "match": true
+    }
+  },
+  "result": {
+    "day": "Friday",
+    "weekday": "Friday",
+    "rain": false,
+    "match": true,
+    "expected_orders": 117,
+    "range_90": [
+      103,
+      130
+    ],
+    "p_busy_percent": 100,
+    "capacity": 90,
+    "call_extra_staff": true
+  }
+}

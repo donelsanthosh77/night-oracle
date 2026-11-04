@@ -1,0 +1,27 @@
+{
+  "question": "Which weekday had the highest average orders in 2025?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "df.groupby('weekday')['orders'].mean().idxmax()"
+      },
+      "result": {
+        "blocked": true,
+        "reason": "code must set a variable called `result`"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df.groupby('weekday')['orders'].mean().idxmax(); result"
+      },
+      "result": {
+        "result": "5"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The weekday with the highest average orders in 2025 was 5 (Friday)."
+}
