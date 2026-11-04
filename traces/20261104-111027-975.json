@@ -1,0 +1,25 @@
+{
+  "question": "How many nights had more than 20 guests (3 cooks needed) in 2026?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "guests_above": 20
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "guests_above": 20
+        },
+        "metric": "count",
+        "nights": 208,
+        "result": 208.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "In 2026, there were 208 nights with more than 20 guests."
+}

@@ -1,0 +1,17 @@
+{
+  "question": "How many guests did we have on 2026-10-31?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[df.date == '2026-10-31'].guests.iloc[0]"
+      },
+      "result": {
+        "result": "30"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "You had 30 guests on 2026-10-31."
+}

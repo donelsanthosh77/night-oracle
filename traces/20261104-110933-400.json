@@ -1,0 +1,48 @@
+{
+  "question": "In 2025, what was the average number of guests on Sundays WITH the biryani special? Round to 1 decimal.",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "mean",
+        "year": 2025,
+        "month": 1,
+        "day_name": "Sunday",
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2025,
+          "month": 1,
+          "day_name": "Sunday",
+          "biryani": true
+        },
+        "metric": "mean",
+        "nights": 1,
+        "result": 29.0
+      }
+    },
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "mean",
+        "year": 2025,
+        "day_name": "Sunday",
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2025,
+          "day_name": "Sunday",
+          "biryani": true
+        },
+        "metric": "mean",
+        "nights": 23,
+        "result": 27.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The average number of guests on Sundays with the biryani special in 2025 was 27.0."
+}

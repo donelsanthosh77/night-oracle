@@ -1,0 +1,229 @@
+{
+  "with_tools": {
+    "accuracy_per_run": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "mean": 1.0,
+    "std": 0.0,
+    "rows": [
+      {
+        "run": 0,
+        "task": 0,
+        "correct": true,
+        "answer": "You had 30 guests on 2026-10-31."
+      },
+      {
+        "run": 0,
+        "task": 1,
+        "correct": true,
+        "answer": "The average number of guests on Fridays in September 2026 was 23.5."
+      },
+      {
+        "run": 0,
+        "task": 2,
+        "correct": true,
+        "answer": "There were 608 guests in total in September 2026."
+      },
+      {
+        "run": 0,
+        "task": 3,
+        "correct": true,
+        "answer": "The average number of guests on Fridays in October 2026 was 27.6."
+      },
+      {
+        "run": 0,
+        "task": 4,
+        "correct": true,
+        "answer": "There were 712 guests in total in October 2026."
+      },
+      {
+        "run": 0,
+        "task": 5,
+        "correct": true,
+        "answer": "Saturday had the highest average number of guests in 2025 with 26.6 guests."
+      },
+      {
+        "run": 0,
+        "task": 6,
+        "correct": true,
+        "answer": "Tuesday had the lowest average number of guests in 2025 with 15.6 guests."
+      },
+      {
+        "run": 0,
+        "task": 7,
+        "correct": true,
+        "answer": "There were 43 nights in 2025 with exactly 30 guests."
+      },
+      {
+        "run": 0,
+        "task": 8,
+        "correct": true,
+        "answer": "The average number of guests on Sundays with the biryani special in 2025 was 27.0."
+      },
+      {
+        "run": 0,
+        "task": 9,
+        "correct": true,
+        "answer": "The average number of guests on Sundays without the biryani special in January 2025 was 16.5.\n\nNote: The query was limited to January 2025. If you need the average for the entire year 2025, please specify the month or ask for the yearly average without a month filter."
+      },
+      {
+        "run": 0,
+        "task": 10,
+        "correct": true,
+        "answer": "There were 10 nights before a public holiday in 2025."
+      },
+      {
+        "run": 0,
+        "task": 11,
+        "correct": true,
+        "answer": "There were 208 nights in 2026 with more than 20 guests."
+      },
+      {
+        "run": 1,
+        "task": 0,
+        "correct": true,
+        "answer": "You had 30 guests on October 31st, 2026."
+      },
+      {
+        "run": 1,
+        "task": 1,
+        "correct": true,
+        "answer": "The average number of guests on Fridays in September 2026 was 23.5."
+      },
+      {
+        "run": 1,
+        "task": 2,
+        "correct": true,
+        "answer": "There were 608 guests in total in September 2026."
+      },
+      {
+        "run": 1,
+        "task": 3,
+        "correct": true,
+        "answer": "The average number of guests on Fridays in October 2026 was 27.6."
+      },
+      {
+        "run": 1,
+        "task": 4,
+        "correct": true,
+        "answer": "There were 712 guests in total in October 2026."
+      },
+      {
+        "run": 1,
+        "task": 5,
+        "correct": true,
+        "answer": "Saturday had the highest average number of guests in 2025 with 26.6 guests."
+      },
+      {
+        "run": 1,
+        "task": 6,
+        "correct": true,
+        "answer": "Tuesday had the lowest average number of guests in 2025 with 15.6."
+      },
+      {
+        "run": 1,
+        "task": 7,
+        "correct": true,
+        "answer": "There were 43 nights in 2025 with exactly 30 guests."
+      },
+      {
+        "run": 1,
+        "task": 8,
+        "correct": true,
+        "answer": "The average number of guests on Sundays with the biryani special in 2025 was 27.0."
+      },
+      {
+        "run": 1,
+        "task": 9,
+        "correct": true,
+        "answer": "The average number of guests on Sundays without the biryani special in January 2025 was 16.5.\n\nNote: This query was for January 2025. If you need the average for the entire year 2025, please specify the month or ask for the yearly average without a month filter."
+      },
+      {
+        "run": 1,
+        "task": 10,
+        "correct": true,
+        "answer": "There were 10 nights before a public holiday in 2025."
+      },
+      {
+        "run": 1,
+        "task": 11,
+        "correct": true,
+        "answer": "In 2026, there were 208 nights with more than 20 guests, requiring 3 cooks."
+      },
+      {
+        "run": 2,
+        "task": 0,
+        "correct": true,
+        "answer": "You had 30 guests on 2026-10-31."
+      },
+      {
+        "run": 2,
+        "task": 1,
+        "correct": true,
+        "answer": "The average number of guests on Fridays in September 2026 was 23.5."
+      },
+      {
+        "run": 2,
+        "task": 2,
+        "correct": true,
+        "answer": "There were 608 guests in total in September 2026."
+      },
+      {
+        "run": 2,
+        "task": 3,
+        "correct": true,
+        "answer": "The average number of guests on Fridays in October 2026 was 27.6."
+      },
+      {
+        "run": 2,
+        "task": 4,
+        "correct": true,
+        "answer": "There were 712 guests in total in October 2026."
+      },
+      {
+        "run": 2,
+        "task": 5,
+        "correct": true,
+        "answer": "Saturday had the highest average number of guests in 2025 with 26.6 guests."
+      },
+      {
+        "run": 2,
+        "task": 6,
+        "correct": true,
+        "answer": "Tuesday had the lowest average number of guests in 2025 with 15.6 guests."
+      },
+      {
+        "run": 2,
+        "task": 7,
+        "correct": true,
+        "answer": "There were 43 nights in 2025 with exactly 30 guests."
+      },
+      {
+        "run": 2,
+        "task": 8,
+        "correct": true,
+        "answer": "The average number of guests on Sundays with the biryani special in 2025 was 27.0."
+      },
+      {
+        "run": 2,
+        "task": 9,
+        "correct": true,
+        "answer": "The average number of guests on Sundays without the biryani special in January 2025 was 16.5.\n\n(Note: The query was interpreted as January 2025. If you meant the full year 2025, please specify the month or ask for the yearly average.)"
+      },
+      {
+        "run": 2,
+        "task": 10,
+        "correct": true,
+        "answer": "There were 10 nights before a public holiday in 2025."
+      },
+      {
+        "run": 2,
+        "task": 11,
+        "correct": true,
+        "answer": "There were 208 nights in 2026 with more than 20 guests."
+      }
+    ]
+  }
+}

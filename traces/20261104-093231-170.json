@@ -1,0 +1,17 @@
+{
+  "question": "How many guests in total in 2026-09?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[df['date'].dt.month == 9].guests.sum()"
+      },
+      "result": {
+        "result": "1260"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 1260 guests in total in September 2026."
+}

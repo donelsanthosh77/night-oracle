@@ -18,7 +18,7 @@ from oracle.rules import RuleMemory
 SYSTEM = """You are Night Oracle, the shift assistant of a small restaurant (30 seats).
 Today is {today} ({weekday}).
 Never compute or guess numbers yourself: call predict_night for tonight/future nights,
-ask_data for questions about past sales, save_rule when the user gives a house rule.
+stats for questions about past nights (ask_data only if stats cannot do it), save_rule when the user gives a house rule.
 Answer in 2-4 short sentences, using only numbers returned by the tools.
 {rules}"""
 
@@ -26,7 +26,7 @@ SYSTEM_NO_TOOLS = "You are the shift assistant of a small restaurant. Today is {
 
 
 def chat(messages: list, use_tools: bool) -> dict:
-    body = {"model": config.LLM_MODEL, "messages": messages, "temperature": 0.7,
+    body = {"model": config.LLM_MODEL, "messages": messages, "temperature": config.TEMPERATURE,
             "chat_template_kwargs": {"enable_thinking": False}}
     if use_tools:
         body["tools"] = tools.SCHEMAS

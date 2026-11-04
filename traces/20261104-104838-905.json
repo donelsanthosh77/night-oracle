@@ -1,0 +1,25 @@
+{
+  "question": "How many nights were completely full (30 guests) in 2025?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2025,
+        "guests_equal": 30
+      },
+      "result": {
+        "filters_used": {
+          "year": 2025,
+          "guests_equal": 30
+        },
+        "metric": "count",
+        "nights": 43,
+        "result": 43.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 43 nights in 2025 with exactly 30 guests."
+}

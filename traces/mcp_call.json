@@ -1,28 +1,36 @@
 {
   "tools_listed": [
     "predict_night",
+    "stats",
     "ask_data",
     "save_rule"
   ],
   "call": {
     "tool": "predict_night",
     "args": {
-      "day": "Friday",
-      "match": true
+      "day": "Sunday",
+      "biryani_special": true
     }
   },
   "result": {
-    "day": "Friday",
-    "weekday": "Friday",
-    "rain": false,
-    "match": true,
-    "expected_orders": 117,
-    "range_90": [
-      103,
-      130
+    "date": "2026-11-08",
+    "weekday": "Sunday",
+    "reasons": [
+      "start of the month",
+      "biryani special"
     ],
-    "p_busy_percent": 100,
-    "capacity": 90,
-    "call_extra_staff": true
+    "expected_guests": 27,
+    "range_90": [
+      23,
+      30
+    ],
+    "seats": 30,
+    "staff_plan_for_expected": {
+      "kitchen": 3,
+      "service": 1,
+      "total": 4
+    },
+    "chance_more_than_20_guests_percent": 100,
+    "call_third_cook": true
   }
 }

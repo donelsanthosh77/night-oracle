@@ -1,0 +1,44 @@
+{
+  "question": "How many nights were completely full (30 guests) in 2025?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = (df[df['year'] == 2025] * (df['guests'] == 30)).sum()"
+      },
+      "result": {
+        "error": "KeyError: 'year'"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = (df[df['date'].dt.year == 2025] * (df['guests'] == 30)).sum()"
+      },
+      "result": {
+        "error": "TypeError: cannot perform __mul__ with this index type: DatetimeArray"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = (df[df['date'] == '2025'] * (df['guests'] == 30)).sum()"
+      },
+      "result": {
+        "error": "TypeError: cannot perform __mul__ with this index type: DatetimeArray"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = ((df['date'] < '2026-11-04') & (df['date'] >= '2025-01-01') & (df['date'] <= '2025-12-31') & (df['guests'] == 30)).sum()"
+      },
+      "result": {
+        "result": "43"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 43 nights in 2025 that were completely full."
+}

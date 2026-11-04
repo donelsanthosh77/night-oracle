@@ -1,0 +1,25 @@
+{
+  "question": "How many guests in total in 2026-10?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "sum",
+        "year": 2026,
+        "month": 10
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 10
+        },
+        "metric": "sum",
+        "nights": 30,
+        "result": 712.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 712 guests in total in October 2026."
+}

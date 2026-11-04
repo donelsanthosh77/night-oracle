@@ -1,0 +1,27 @@
+{
+  "question": "In 2025, what was the average number of guests on Sundays WITH the biryani special? Round to 1 decimal.",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "df[(df.weekday == 6) & (df.biryani == 1)]['guests'].mean()"
+      },
+      "result": {
+        "blocked": true,
+        "reason": "code must set a variable called `result`"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[(df.weekday == 6) & (df.biryani == 1)]['guests'].mean(); result"
+      },
+      "result": {
+        "result": 26.414634146341463
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The average number of guests on Sundays with the biryani special in 2025 was 26.4."
+}

@@ -1,0 +1,23 @@
+{
+  "question": "What was the quietest night of 2026 (lowest number of guests)?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "min",
+        "year": 2026
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026
+        },
+        "metric": "min",
+        "nights": 296,
+        "result": 11.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The quietest night of 2026 had 11 guests."
+}

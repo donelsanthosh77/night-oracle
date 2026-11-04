@@ -1,0 +1,25 @@
+{
+  "question": "How many nights before a public holiday were there in 2025?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2025,
+        "before_holiday": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2025,
+          "before_holiday": true
+        },
+        "metric": "count",
+        "nights": 10,
+        "result": 10.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 10 nights before a public holiday in 2025."
+}

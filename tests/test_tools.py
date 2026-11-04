@@ -44,3 +44,25 @@ def test_ask_data_answers_and_blocks():
 def test_unknown_tool_and_bad_args():
     assert "error" in tools.call("rm_rf", {})
     assert "error" in tools.call("predict_night", {"day": "not-a-date"})
+
+
+def test_stats_gives_the_known_answers():
+    """The stats tool must agree with the benchmark answers computed independently in make_tasks."""
+    import json
+    from bench.make_tasks import build
+    from oracle.cleaning import load_clean
+    tasks = build(load_clean())
+    assert tools.stats("sum", year=2026, month=10)["result"] == tasks[4]["answer"]
+    assert tools.stats("mean", year=2026, month=9, day_name="Friday")["result"] == tasks[1]["answer"]
+    by_day = tools.stats("mean", year=2025, by_day=True)
+    assert by_day["highest_day"] == tasks[5]["answer"] and by_day["lowest_day"] == tasks[6]["answer"]
+    assert tools.stats("count", year=2026, guests_above=20)["result"] == tasks[11]["answer"]
+    assert tools.stats("count", year=2025, guests_equal=30)["result"] == tasks[7]["answer"]
+    assert tools.stats("count", year=2025, before_holiday=True)["result"] == tasks[10]["answer"]
+    json.dumps(by_day)  # result must be JSON for the model
+
+
+def test_stats_edge_cases():
+    assert tools.stats("mean", year=1990)["nights"] == 0
+    assert "error" in tools.call("stats", {"metric": "median"})
+    assert "error" in tools.call("stats", {"metric": "mean", "day_name": "Funday"})

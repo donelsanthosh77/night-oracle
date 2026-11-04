@@ -1,0 +1,27 @@
+{
+  "question": "What was the average number of guests on Fridays in 2026-09? Round to 1 decimal.",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "mean",
+        "year": 2026,
+        "month": 9,
+        "day_name": "Friday"
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 9,
+          "day_name": "Friday"
+        },
+        "metric": "mean",
+        "nights": 4,
+        "result": 23.5
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The average number of guests on Fridays in September 2026 was 23.5."
+}

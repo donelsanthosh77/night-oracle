@@ -1,0 +1,26 @@
+{
+  "question": "How many nights had more than 20 guests (3 cooks needed) in 2026?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[(df.date.year == 2026) & (df.guests > 20)].shape[0]"
+      },
+      "result": {
+        "error": "AttributeError: 'Series' object has no attribute 'year'"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = len(df[(df.date > '2026-01-01') & (df.date < '2026-12-31') & (df.guests > 20)])"
+      },
+      "result": {
+        "result": 207
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "In 2026, 207 nights had more than 20 guests, requiring 3 cooks."
+}

@@ -42,7 +42,7 @@ def clean(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     n = len(df); df = df.sort_values("date").drop_duplicates("date", keep="last")
     step("one_row_per_date", n, "two different lines for one date: keep the last export")
 
-    df["weekday"] = df["date"].dt.weekday
+    df["weekday"] = df["date"].dt.day_of_week
     df["biryani"] = (df["special"].fillna("") == "biryani").astype(int)
     df["before_holiday"] = df["date"].map(lambda d: int(before_holiday(d.date())))
     df["start_of_month"] = (df["date"].dt.day <= 10).astype(int)

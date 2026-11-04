@@ -8,7 +8,7 @@ from oracle.model import GuestsModel, baseline_predict, mae, split_by_time
 def fake(n_weeks=20):
     """Known answer: guests = 10 + weekday + 4 biryani + 3 start of month, rain changes nothing, no noise."""
     dates = pd.date_range("2026-01-05", periods=7 * n_weeks, freq="D")  # starts on a Monday
-    wd = dates.weekday
+    wd = dates.day_of_week
     i = np.arange(len(dates))
     biryani = ((wd == 6) & (i % 2 == 0)).astype(int)
     som = (dates.day <= 10).astype(int)

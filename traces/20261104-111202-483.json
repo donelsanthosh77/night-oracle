@@ -1,0 +1,55 @@
+{
+  "question": "How many Sundays had the biryani special in 2026?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "month": 1,
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 1,
+          "biryani": true
+        },
+        "metric": "count",
+        "nights": 1,
+        "result": 1.0
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "df[df['day_name'] == 'Sunday' & df['biryani'] == 1].shape[0]"
+      },
+      "result": {
+        "error": "TypeError: Cannot perform 'rand_' with a dtyped [int64] array and scalar of type [bool]"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "df[(df['day_name'] == 'Sunday') & (df['biryani'] == 1)].shape[0]"
+      },
+      "result": {
+        "blocked": true,
+        "reason": "code must set a variable called `result`"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = len(df[(df['day_name'] == 'Sunday') & (df['biryani'] == 1)])"
+      },
+      "result": {
+        "result": 41
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 41 Sundays with the biryani special in 2026."
+}

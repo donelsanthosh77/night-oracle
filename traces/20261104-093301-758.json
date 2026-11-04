@@ -1,0 +1,17 @@
+{
+  "question": "How many guests in total in 2026-10?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[df['date'].dt.month == 10]['guests'].sum()"
+      },
+      "result": {
+        "result": "1465"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 1465 guests in total in October 2026."
+}

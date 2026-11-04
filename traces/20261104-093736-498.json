@@ -1,0 +1,26 @@
+{
+  "question": "In 2025, what was the average number of guests on Sundays WITHOUT the biryani special? Round to 1 decimal.",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "sundays_no_biryani = df[df.weekday == 6 & df.biryani == 0]\navg_guests = sundays_no_biryani.guests.mean()\nresult = avg_guests"
+      },
+      "result": {
+        "error": "ValueError: The truth value of a Series is ambiguous. Use a.empty, a.item(), a.any() or a.all()."
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "sundays_no_biryani = df[(df.weekday == 6) & (df.biryani == 0)]\navg_guests = sundays_no_biryani.guests.mean()\nresult = avg_guests"
+      },
+      "result": {
+        "result": 16.877551020408163
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The average number of guests on Sundays without the biryani special was 16.9."
+}

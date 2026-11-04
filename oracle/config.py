@@ -12,6 +12,7 @@ TRACES = ROOT / "traces"
 #   llama-server -hf bartowski/Qwen_Qwen3.5-4B-GGUF:Q4_K_M --port 8080 -c 16384 --jinja
 LLM_URL = "http://localhost:8080/v1/chat/completions"
 LLM_MODEL = "qwen3.5-4b"
+TEMPERATURE = 0.2         # low: same question -> more stable answers (was 0.7 in benchmark v1)
 
 # Owner's rules (2026-11-04)
 SEATS = 30              # the restaurant is full at 30 guests (evening is usually ~20)

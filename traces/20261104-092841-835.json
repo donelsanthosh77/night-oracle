@@ -1,0 +1,17 @@
+{
+  "question": "Which day of the week had the lowest average number of guests in 2025?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df.groupby('weekday')['guests'].mean().idxmin()"
+      },
+      "result": {
+        "result": "1"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Monday (weekday 1) had the lowest average number of guests."
+}

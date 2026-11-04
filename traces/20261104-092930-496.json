@@ -1,0 +1,44 @@
+{
+  "question": "How many nights were completely full (30 guests) in 2025?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = (df[df['year'] == 2025] & (df['guests'] == 30)).shape[0]"
+      },
+      "result": {
+        "error": "KeyError: 'year'"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = (df[(df['date'].dt.year == 2025)] & (df['guests'] == 30)).shape[0]"
+      },
+      "result": {
+        "error": "TypeError: operation 'and_' not supported for dtype 'datetime64[us]' with dtype 'object'"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[(df['date'] == '2025').apply(lambda x: x.year == 2025) & (df['guests'] == 30)].shape[0]"
+      },
+      "result": {
+        "error": "AttributeError: 'bool' object has no attribute 'year'"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = ((df['date'].dt.year == 2025) & (df['guests'] == 30)).sum()"
+      },
+      "result": {
+        "result": "43"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "There were 43 completely full nights in 2025."
+}

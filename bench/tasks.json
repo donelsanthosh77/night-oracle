@@ -3,70 +3,117 @@
     "q": "How many guests did we have on 2026-10-31?",
     "answer": 30,
     "type": "number",
-    "tol": 0
+    "tol": 0,
+    "set": "original"
   },
   {
     "q": "What was the average number of guests on Fridays in 2026-09? Round to 1 decimal.",
     "answer": 23.5,
     "type": "number",
-    "tol": 0.5
+    "tol": 0.5,
+    "set": "original"
   },
   {
     "q": "How many guests in total in 2026-09?",
     "answer": 608,
     "type": "number",
-    "tol": 0
+    "tol": 0,
+    "set": "original"
   },
   {
     "q": "What was the average number of guests on Fridays in 2026-10? Round to 1 decimal.",
     "answer": 27.6,
     "type": "number",
-    "tol": 0.5
+    "tol": 0.5,
+    "set": "original"
   },
   {
     "q": "How many guests in total in 2026-10?",
     "answer": 712,
     "type": "number",
-    "tol": 0
+    "tol": 0,
+    "set": "original"
   },
   {
     "q": "Which day of the week had the highest average number of guests in 2025?",
     "answer": "Saturday",
-    "type": "text"
+    "type": "text",
+    "set": "original"
   },
   {
     "q": "Which day of the week had the lowest average number of guests in 2025?",
     "answer": "Tuesday",
-    "type": "text"
+    "type": "text",
+    "set": "original"
   },
   {
     "q": "How many nights were completely full (30 guests) in 2025?",
     "answer": 43,
     "type": "number",
-    "tol": 0
+    "tol": 0,
+    "set": "original"
   },
   {
     "q": "In 2025, what was the average number of guests on Sundays WITH the biryani special? Round to 1 decimal.",
     "answer": 27.0,
     "type": "number",
-    "tol": 0.5
+    "tol": 0.5,
+    "set": "original"
   },
   {
     "q": "In 2025, what was the average number of guests on Sundays WITHOUT the biryani special? Round to 1 decimal.",
     "answer": 16.2,
     "type": "number",
-    "tol": 0.5
+    "tol": 0.5,
+    "set": "original"
   },
   {
     "q": "How many nights before a public holiday were there in 2025?",
     "answer": 10,
     "type": "number",
-    "tol": 0
+    "tol": 0,
+    "set": "original"
   },
   {
     "q": "How many nights had more than 20 guests (3 cooks needed) in 2026?",
     "answer": 208,
     "type": "number",
-    "tol": 0
+    "tol": 0,
+    "set": "original"
+  },
+  {
+    "q": "What was the average number of guests on rainy Saturdays in 2025? Round to 1 decimal.",
+    "answer": 27.7,
+    "type": "number",
+    "tol": 0.5,
+    "set": "held_out"
+  },
+  {
+    "q": "What was the highest number of guests on a single night in September 2026?",
+    "answer": 29,
+    "type": "number",
+    "tol": 0,
+    "set": "held_out"
+  },
+  {
+    "q": "How many Sundays had the biryani special in 2026?",
+    "answer": 18,
+    "type": "number",
+    "tol": 0,
+    "set": "held_out"
+  },
+  {
+    "q": "What was the quietest night of 2026 (lowest number of guests)?",
+    "answer": 11,
+    "type": "number",
+    "tol": 0,
+    "set": "held_out"
+  },
+  {
+    "q": "In 2025, what was the average number of guests on Tuesdays at the start of the month (days 1 to 10)? Round to 1 decimal.",
+    "answer": 17.9,
+    "type": "number",
+    "tol": 0.5,
+    "set": "held_out"
   }
 ]

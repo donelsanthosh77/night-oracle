@@ -1,0 +1,44 @@
+{
+  "question": "How many guests did we have on 2026-10-31?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "sum",
+        "year": 2026,
+        "month": 10
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 10
+        },
+        "metric": "sum",
+        "nights": 30,
+        "result": 712.0
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "df[df['date'] == '2026-10-31']['guests'].sum()"
+      },
+      "result": {
+        "blocked": true,
+        "reason": "code must set a variable called `result`"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[df['date'] == '2026-10-31']['guests'].sum()"
+      },
+      "result": {
+        "result": "30"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "You had 30 guests on October 31st, 2026."
+}

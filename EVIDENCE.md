@@ -49,7 +49,10 @@
 - **What the data cannot conclude:** it is synthetic, generated from the owner's rules (some thresholds are my assumptions), so the model can only find those rules back; it says nothing about the real restaurant until it is checked on real nights.
 
 ## Block 9 — A measured comparison
-- **What:** 11 questions about past nights with answers computed by code (`bench/tasks.json`); Qwen alone vs Qwen + tools; 3 runs each.
-- **Results:** TODO mean ± std from `bench/results.json`.
-- **One failure explained from its trace (2026-11-03, before the fix):** asked "which weekday had the highest average in 2025", Qwen dropped the 2025 filter and translated `weekday` 5 as "Friday" (it is Saturday). Fix: the table now has a `day_name` column. TODO trace file name.
-- **Reproduce:** `python -m bench.make_tasks && python -m bench.run_bench --runs 3`
+- **What:** 12 + 5 held-out questions about past nights with answers computed by code (`bench/tasks.json`); 3 runs each.
+- **v1 (2026-11-04, temperature 0.7, Qwen writes pandas code):** Qwen alone **0.00 ± 0.00**, Qwen + tools **0.53 ± 0.13** (`bench/results.json`).
+  Qwen alone either refused ("I don't have access…") or invented: 48 and 45 guests (the restaurant has 30 seats), US holidays instead of French ones.
+- **v2 (temperature 0.2, new `stats` tool: Qwen only fills parameters, code computes):** Qwen + tools **1.00 ± 0.00** on the 12 original questions (`bench/results_v2.json`).
+- **v3 — held-out check:** the `stats` description contains examples close to the original questions, so 5 NEW questions were added after v2 (rainy Saturdays, busiest night of a month, biryani Sundays count, quietest night, Tuesdays at start of month). TODO: original vs held-out mean ± std (`bench/results_v3.json`).
+- **One failure explained from its trace:** TODO (from results_v2.json). Also, 2026-11-03: asked the busiest weekday in 2025, Qwen dropped the 2025 filter and translated `weekday` 5 as "Friday" (it is Saturday) → fixed with the `day_name` column.
+- **Reproduce:** `python -m bench.make_tasks && python -m bench.run_bench --runs 3 --tools-only --out bench/results_v3.json`

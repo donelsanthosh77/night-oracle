@@ -1,0 +1,17 @@
+{
+  "question": "How many nights had more than 20 guests (3 cooks needed) in 2026?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[(df['date'].dt.year == 2026) & (df['guests'] > 20)]\nresult = len(result)"
+      },
+      "result": {
+        "result": 208
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "In 2026, there were 208 nights with more than 20 guests."
+}

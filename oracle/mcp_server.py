@@ -18,6 +18,16 @@ def predict_night(day: str, rain: bool = False, weather: str = "normal",
 
 
 @server.tool()
+def stats(metric: str, year: int | None = None, month: int | None = None, day_name: str | None = None,
+          rain: bool | None = None, biryani: bool | None = None, before_holiday: bool | None = None,
+          start_of_month: bool | None = None, guests_above: int | None = None,
+          guests_equal: int | None = None, by_day: bool = False) -> dict:
+    """mean/sum/count/max/min of guests on past nights, after filters; by_day=True gives one value per weekday."""
+    return tools.stats(metric, year, month, day_name, rain, biryani, before_holiday, start_of_month,
+                       guests_above, guests_equal, by_day)
+
+
+@server.tool()
 def ask_data(code: str) -> dict:
     """Run safe pandas code on the clean sales table `df`; the code must set `result`."""
     return tools.ask_data(code)

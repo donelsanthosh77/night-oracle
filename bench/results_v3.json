@@ -1,0 +1,1730 @@
+{
+  "with_tools": {
+    "accuracy_per_run": [
+      0.8823529411764706,
+      0.8823529411764706,
+      0.8823529411764706
+    ],
+    "mean": 0.8823529411764706,
+    "std": 0.0,
+    "rows": [
+      {
+        "run": 0,
+        "task": 0,
+        "set": "original",
+        "correct": true,
+        "answer": "You had 30 guests on 2026-10-31.",
+        "steps": [
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "df[df['date'] == '2026-10-31']['guests'].values[0]"
+            },
+            "result": {
+              "blocked": true,
+              "reason": "code must set a variable called `result`"
+            }
+          },
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "result = df[df['date'] == '2026-10-31']['guests'].values[0]"
+            },
+            "result": {
+              "result": "30"
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 1,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Fridays in September 2026 was 23.5.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2026,
+              "month": 9,
+              "day_name": "Friday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9,
+                "day_name": "Friday"
+              },
+              "metric": "mean",
+              "nights": 4,
+              "result": 23.5
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 2,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 608 guests in total in September 2026.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "sum",
+              "year": 2026,
+              "month": 9
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9
+              },
+              "metric": "sum",
+              "nights": 28,
+              "result": 608.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 3,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Fridays in October 2026 was 27.6.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2026,
+              "month": 10,
+              "day_name": "Friday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 10,
+                "day_name": "Friday"
+              },
+              "metric": "mean",
+              "nights": 5,
+              "result": 27.6
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 4,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 712 guests in total in October 2026.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "sum",
+              "year": 2026,
+              "month": 10
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 10
+              },
+              "metric": "sum",
+              "nights": 30,
+              "result": 712.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 5,
+        "set": "original",
+        "correct": true,
+        "answer": "Saturday had the highest average number of guests in 2025 with 26.6.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "by_day": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025
+              },
+              "metric": "mean",
+              "by_day": {
+                "Saturday": 26.6,
+                "Friday": 25.5,
+                "Monday": 24.7,
+                "Thursday": 24.6,
+                "Wednesday": 22.9,
+                "Sunday": 21.4,
+                "Tuesday": 15.6
+              },
+              "highest_day": "Saturday",
+              "lowest_day": "Tuesday"
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 6,
+        "set": "original",
+        "correct": true,
+        "answer": "Tuesday had the lowest average number of guests in 2025 with 15.6 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "by_day": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025
+              },
+              "metric": "mean",
+              "by_day": {
+                "Saturday": 26.6,
+                "Friday": 25.5,
+                "Monday": 24.7,
+                "Thursday": 24.6,
+                "Wednesday": 22.9,
+                "Sunday": 21.4,
+                "Tuesday": 15.6
+              },
+              "highest_day": "Saturday",
+              "lowest_day": "Tuesday"
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 7,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 43 nights in 2025 with exactly 30 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2025,
+              "guests_equal": 30
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "guests_equal": 30
+              },
+              "metric": "count",
+              "nights": 43,
+              "result": 43.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 8,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Sundays with the biryani special in 2025 was 27.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Sunday",
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Sunday",
+                "biryani": true
+              },
+              "metric": "mean",
+              "nights": 1,
+              "result": 29.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "day_name": "Sunday",
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "day_name": "Sunday",
+                "biryani": true
+              },
+              "metric": "mean",
+              "nights": 23,
+              "result": 27.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 9,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Sundays without the biryani special in January 2025 was 16.5.\n\n(Note: The query was interpreted as January 2025. If you meant the full year 2025, please specify the month or ask for the yearly average without a month filter.)",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Sunday",
+              "biryani": false
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Sunday",
+                "biryani": false
+              },
+              "metric": "mean",
+              "nights": 2,
+              "result": 16.5
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 10,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 10 nights before a public holiday in 2025.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2025,
+              "before_holiday": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "before_holiday": true
+              },
+              "metric": "count",
+              "nights": 10,
+              "result": 10.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 11,
+        "set": "original",
+        "correct": true,
+        "answer": "In 2026, there were 208 nights with more than 20 guests, requiring three cooks.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "guests_above": 20
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "guests_above": 20
+              },
+              "metric": "count",
+              "nights": 208,
+              "result": 208.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 12,
+        "set": "held_out",
+        "correct": false,
+        "answer": "The average number of guests on rainy Saturdays in January 2025 was 27.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Saturday",
+              "rain": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Saturday",
+                "rain": true
+              },
+              "metric": "mean",
+              "nights": 2,
+              "result": 27.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 13,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The highest number of guests on a single night in September 2026 was 29.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "max",
+              "year": 2026,
+              "month": 9
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9
+              },
+              "metric": "max",
+              "nights": 28,
+              "result": 29.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 14,
+        "set": "held_out",
+        "correct": false,
+        "answer": "I could not finish (too many tool calls).",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 1,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 1,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 1,
+              "result": 1.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 2,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 2,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 2,
+              "result": 2.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 3,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 3,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 3,
+              "result": 3.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 4,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 4,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 1,
+              "result": 1.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 5,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 5,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 2,
+              "result": 2.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 6,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 6,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 2,
+              "result": 2.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 15,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The quietest night of 2026 had 11 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "min",
+              "year": 2026
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026
+              },
+              "metric": "min",
+              "nights": 296,
+              "result": 11.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 0,
+        "task": 16,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The average number of guests on Tuesdays at the start of January 2025 was 18.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Tuesday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Tuesday"
+              },
+              "metric": "mean",
+              "nights": 4,
+              "result": 18.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 0,
+        "set": "original",
+        "correct": true,
+        "answer": "You had 30 guests on 2026-10-31.",
+        "steps": [
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "df[df['date'] == '2026-10-31']['guests'].values[0]"
+            },
+            "result": {
+              "blocked": true,
+              "reason": "code must set a variable called `result`"
+            }
+          },
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "result = df[df['date'] == '2026-10-31']['guests'].values[0]"
+            },
+            "result": {
+              "result": "30"
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 1,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Fridays in September 2026 was 23.5.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2026,
+              "month": 9,
+              "day_name": "Friday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9,
+                "day_name": "Friday"
+              },
+              "metric": "mean",
+              "nights": 4,
+              "result": 23.5
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 2,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 608 guests in total in September 2026.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "sum",
+              "year": 2026,
+              "month": 9
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9
+              },
+              "metric": "sum",
+              "nights": 28,
+              "result": 608.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 3,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Fridays in October 2026 was 27.6.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2026,
+              "month": 10,
+              "day_name": "Friday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 10,
+                "day_name": "Friday"
+              },
+              "metric": "mean",
+              "nights": 5,
+              "result": 27.6
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 4,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 712 guests in total in October 2026.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "sum",
+              "year": 2026,
+              "month": 10
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 10
+              },
+              "metric": "sum",
+              "nights": 30,
+              "result": 712.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 5,
+        "set": "original",
+        "correct": true,
+        "answer": "Saturday had the highest average number of guests in 2025 with 26.6.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "by_day": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025
+              },
+              "metric": "mean",
+              "by_day": {
+                "Saturday": 26.6,
+                "Friday": 25.5,
+                "Monday": 24.7,
+                "Thursday": 24.6,
+                "Wednesday": 22.9,
+                "Sunday": 21.4,
+                "Tuesday": 15.6
+              },
+              "highest_day": "Saturday",
+              "lowest_day": "Tuesday"
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 6,
+        "set": "original",
+        "correct": true,
+        "answer": "Tuesday had the lowest average number of guests in 2025 with 15.6.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "by_day": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025
+              },
+              "metric": "mean",
+              "by_day": {
+                "Saturday": 26.6,
+                "Friday": 25.5,
+                "Monday": 24.7,
+                "Thursday": 24.6,
+                "Wednesday": 22.9,
+                "Sunday": 21.4,
+                "Tuesday": 15.6
+              },
+              "highest_day": "Saturday",
+              "lowest_day": "Tuesday"
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 7,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 43 nights in 2025 with exactly 30 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2025,
+              "guests_equal": 30
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "guests_equal": 30
+              },
+              "metric": "count",
+              "nights": 43,
+              "result": 43.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 8,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Sundays with the biryani special in 2025 was 27.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Sunday",
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Sunday",
+                "biryani": true
+              },
+              "metric": "mean",
+              "nights": 1,
+              "result": 29.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "day_name": "Sunday",
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "day_name": "Sunday",
+                "biryani": true
+              },
+              "metric": "mean",
+              "nights": 23,
+              "result": 27.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 9,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Sundays without the biryani special in January 2025 was 16.5.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Sunday",
+              "biryani": false
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Sunday",
+                "biryani": false
+              },
+              "metric": "mean",
+              "nights": 2,
+              "result": 16.5
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 10,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 10 nights before a public holiday in 2025.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2025,
+              "before_holiday": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "before_holiday": true
+              },
+              "metric": "count",
+              "nights": 10,
+              "result": 10.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 11,
+        "set": "original",
+        "correct": true,
+        "answer": "In 2026, there were 208 nights with more than 20 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "guests_above": 20
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "guests_above": 20
+              },
+              "metric": "count",
+              "nights": 208,
+              "result": 208.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 12,
+        "set": "held_out",
+        "correct": false,
+        "answer": "The average number of guests on rainy Saturdays in 2025 was 27.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Saturday",
+              "rain": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Saturday",
+                "rain": true
+              },
+              "metric": "mean",
+              "nights": 2,
+              "result": 27.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 13,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The highest number of guests on a single night in September 2026 was 29.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "max",
+              "year": 2026,
+              "month": 9
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9
+              },
+              "metric": "max",
+              "nights": 28,
+              "result": 29.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 14,
+        "set": "held_out",
+        "correct": false,
+        "answer": "I could not finish (too many tool calls).",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 1,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 1,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 1,
+              "result": 1.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 2,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 2,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 2,
+              "result": 2.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 3,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 3,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 3,
+              "result": 3.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 4,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 4,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 1,
+              "result": 1.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 5,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 5,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 2,
+              "result": 2.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 6,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 6,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 2,
+              "result": 2.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 15,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The quietest night of 2026 had 11 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "min",
+              "year": 2026
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026
+              },
+              "metric": "min",
+              "nights": 296,
+              "result": 11.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 1,
+        "task": 16,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The average number of guests on Tuesdays in January 2025 was 18.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Tuesday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Tuesday"
+              },
+              "metric": "mean",
+              "nights": 4,
+              "result": 18.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 0,
+        "set": "original",
+        "correct": true,
+        "answer": "You had 30 guests on 2026-10-31.",
+        "steps": [
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "df[df['date'] == '2026-10-31']['guests'].values[0]"
+            },
+            "result": {
+              "blocked": true,
+              "reason": "code must set a variable called `result`"
+            }
+          },
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "result = df[df['date'] == '2026-10-31']['guests'].values[0]"
+            },
+            "result": {
+              "result": "30"
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 1,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Fridays in September 2026 was 23.5.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2026,
+              "month": 9,
+              "day_name": "Friday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9,
+                "day_name": "Friday"
+              },
+              "metric": "mean",
+              "nights": 4,
+              "result": 23.5
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 2,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 608 guests in total in September 2026.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "sum",
+              "year": 2026,
+              "month": 9
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9
+              },
+              "metric": "sum",
+              "nights": 28,
+              "result": 608.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 3,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Fridays in October 2026 was 27.6.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2026,
+              "month": 10,
+              "day_name": "Friday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 10,
+                "day_name": "Friday"
+              },
+              "metric": "mean",
+              "nights": 5,
+              "result": 27.6
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 4,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 712 guests in total in October 2026.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "sum",
+              "year": 2026,
+              "month": 10
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 10
+              },
+              "metric": "sum",
+              "nights": 30,
+              "result": 712.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 5,
+        "set": "original",
+        "correct": true,
+        "answer": "Saturday had the highest average number of guests in 2025 with 26.6.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "by_day": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025
+              },
+              "metric": "mean",
+              "by_day": {
+                "Saturday": 26.6,
+                "Friday": 25.5,
+                "Monday": 24.7,
+                "Thursday": 24.6,
+                "Wednesday": 22.9,
+                "Sunday": 21.4,
+                "Tuesday": 15.6
+              },
+              "highest_day": "Saturday",
+              "lowest_day": "Tuesday"
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 6,
+        "set": "original",
+        "correct": true,
+        "answer": "Tuesday had the lowest average number of guests in 2025 with 15.6 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "by_day": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025
+              },
+              "metric": "mean",
+              "by_day": {
+                "Saturday": 26.6,
+                "Friday": 25.5,
+                "Monday": 24.7,
+                "Thursday": 24.6,
+                "Wednesday": 22.9,
+                "Sunday": 21.4,
+                "Tuesday": 15.6
+              },
+              "highest_day": "Saturday",
+              "lowest_day": "Tuesday"
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 7,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 43 nights in 2025 with exactly 30 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2025,
+              "guests_equal": 30
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "guests_equal": 30
+              },
+              "metric": "count",
+              "nights": 43,
+              "result": 43.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 8,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Sundays with the biryani special in 2025 was 27.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Sunday",
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Sunday",
+                "biryani": true
+              },
+              "metric": "mean",
+              "nights": 1,
+              "result": 29.0
+            }
+          },
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "day_name": "Sunday",
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "day_name": "Sunday",
+                "biryani": true
+              },
+              "metric": "mean",
+              "nights": 23,
+              "result": 27.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 9,
+        "set": "original",
+        "correct": true,
+        "answer": "The average number of guests on Sundays without the biryani special in January 2025 was 16.5.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Sunday",
+              "biryani": false
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Sunday",
+                "biryani": false
+              },
+              "metric": "mean",
+              "nights": 2,
+              "result": 16.5
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 10,
+        "set": "original",
+        "correct": true,
+        "answer": "There were 10 nights before a public holiday in 2025.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2025,
+              "before_holiday": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "before_holiday": true
+              },
+              "metric": "count",
+              "nights": 10,
+              "result": 10.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 11,
+        "set": "original",
+        "correct": true,
+        "answer": "In 2026, there were 208 nights with more than 20 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "guests_above": 20
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "guests_above": 20
+              },
+              "metric": "count",
+              "nights": 208,
+              "result": 208.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 12,
+        "set": "held_out",
+        "correct": false,
+        "answer": "The average number of guests on rainy Saturdays in January 2025 was 27.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Saturday",
+              "rain": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Saturday",
+                "rain": true
+              },
+              "metric": "mean",
+              "nights": 2,
+              "result": 27.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 13,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The highest number of guests on a single night in September 2026 was 29.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "max",
+              "year": 2026,
+              "month": 9
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 9
+              },
+              "metric": "max",
+              "nights": 28,
+              "result": 29.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 14,
+        "set": "held_out",
+        "correct": false,
+        "answer": "There were 41 Sundays with the biryani special in 2026.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "count",
+              "year": 2026,
+              "month": 1,
+              "biryani": true
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026,
+                "month": 1,
+                "biryani": true
+              },
+              "metric": "count",
+              "nights": 1,
+              "result": 1.0
+            }
+          },
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "df[df['day_name'] == 'Sunday' & df['biryani'] == 1].shape[0]"
+            },
+            "result": {
+              "error": "TypeError: Cannot perform 'rand_' with a dtyped [int64] array and scalar of type [bool]"
+            }
+          },
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "df[(df['day_name'] == 'Sunday') & (df['biryani'] == 1)].shape[0]"
+            },
+            "result": {
+              "blocked": true,
+              "reason": "code must set a variable called `result`"
+            }
+          },
+          {
+            "tool": "ask_data",
+            "args": {
+              "code": "result = len(df[(df['day_name'] == 'Sunday') & (df['biryani'] == 1)])"
+            },
+            "result": {
+              "result": 41
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 15,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The quietest night of 2026 had 11 guests.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "min",
+              "year": 2026
+            },
+            "result": {
+              "filters_used": {
+                "year": 2026
+              },
+              "metric": "min",
+              "nights": 296,
+              "result": 11.0
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "task": 16,
+        "set": "held_out",
+        "correct": true,
+        "answer": "The average number of guests on Tuesdays in January 2025 was 18.0.",
+        "steps": [
+          {
+            "tool": "stats",
+            "args": {
+              "metric": "mean",
+              "year": 2025,
+              "month": 1,
+              "day_name": "Tuesday"
+            },
+            "result": {
+              "filters_used": {
+                "year": 2025,
+                "month": 1,
+                "day_name": "Tuesday"
+              },
+              "metric": "mean",
+              "nights": 4,
+              "result": 18.0
+            }
+          }
+        ]
+      }
+    ],
+    "original": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "held_out": {
+      "mean": 0.6,
+      "std": 0.0
+    }
+  }
+}

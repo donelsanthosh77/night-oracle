@@ -1,0 +1,27 @@
+{
+  "question": "In 2025, what was the average number of guests on Tuesdays at the start of the month (days 1 to 10)? Round to 1 decimal.",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "mean",
+        "year": 2025,
+        "month": 1,
+        "day_name": "Tuesday"
+      },
+      "result": {
+        "filters_used": {
+          "year": 2025,
+          "month": 1,
+          "day_name": "Tuesday"
+        },
+        "metric": "mean",
+        "nights": 4,
+        "result": 18.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The average number of guests on Tuesdays in January 2025 was 18.0."
+}

@@ -1,0 +1,35 @@
+{
+  "question": "What was the average number of guests on Fridays in 2026-10? Round to 1 decimal.",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[df['year'] == 2026 & df['month'] == 10 & df['weekday'] == 4]['guests'].mean()"
+      },
+      "result": {
+        "error": "KeyError: 'year'"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[df['weekday'] == 4 & df['date'] >= '2026-10-01' & df['date'] <= '2026-10-31']['guests'].mean()"
+      },
+      "result": {
+        "error": "TypeError: operation 'rand_' not supported for dtype 'datetime64[us]' with object of type int"
+      }
+    },
+    {
+      "tool": "ask_data",
+      "args": {
+        "code": "result = df[(df.weekday == 4) & (df.date >= '2026-10-01') & (df.date <= '2026-10-31')]['guests'].mean()"
+      },
+      "result": {
+        "result": 27.6
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "The average number of guests on Fridays in October 2026 was 27.6."
+}

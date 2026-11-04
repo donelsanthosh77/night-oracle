@@ -1,0 +1,122 @@
+{
+  "question": "How many Sundays had the biryani special in 2026?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "month": 1,
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 1,
+          "biryani": true
+        },
+        "metric": "count",
+        "nights": 1,
+        "result": 1.0
+      }
+    },
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "month": 2,
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 2,
+          "biryani": true
+        },
+        "metric": "count",
+        "nights": 2,
+        "result": 2.0
+      }
+    },
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "month": 3,
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 3,
+          "biryani": true
+        },
+        "metric": "count",
+        "nights": 3,
+        "result": 3.0
+      }
+    },
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "month": 4,
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 4,
+          "biryani": true
+        },
+        "metric": "count",
+        "nights": 1,
+        "result": 1.0
+      }
+    },
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "month": 5,
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 5,
+          "biryani": true
+        },
+        "metric": "count",
+        "nights": 2,
+        "result": 2.0
+      }
+    },
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "count",
+        "year": 2026,
+        "month": 6,
+        "biryani": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2026,
+          "month": 6,
+          "biryani": true
+        },
+        "metric": "count",
+        "nights": 2,
+        "result": 2.0
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "I could not finish (too many tool calls)."
+}

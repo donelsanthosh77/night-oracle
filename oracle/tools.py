@@ -70,11 +70,50 @@ def ask_data(code: str) -> dict:
     return {"result": json.loads(json.dumps(result, default=str))}
 
 
+FILTERS = ("year", "month", "day_name", "rain", "biryani", "before_holiday", "start_of_month")
+
+
+def stats(metric: str, year: int | None = None, month: int | None = None, day_name: str | None = None,
+          rain: bool | None = None, biryani: bool | None = None, before_holiday: bool | None = None,
+          start_of_month: bool | None = None, guests_above: int | None = None,
+          guests_equal: int | None = None, by_day: bool = False) -> dict:
+    """Safe statistics on past nights: the model chooses WHAT, our code computes HOW."""
+    if metric not in ("mean", "sum", "count", "max", "min"):
+        raise ValueError("metric must be mean, sum, count, max or min")
+    df = load_clean()
+    used = {}
+    if year is not None:
+        df = df[df["date"].dt.year == int(year)]; used["year"] = year
+    if month is not None:
+        df = df[df["date"].dt.month == int(month)]; used["month"] = month
+    if day_name is not None:
+        if day_name.capitalize() not in DAYS:
+            raise ValueError(f"day_name must be one of {DAYS}")
+        df = df[df["day_name"] == day_name.capitalize()]; used["day_name"] = day_name.capitalize()
+    for col, val in (("rain", rain), ("biryani", biryani), ("before_holiday", before_holiday),
+                     ("start_of_month", start_of_month)):
+        if val is not None:
+            df = df[df[col] == int(val)]; used[col] = bool(val)
+    if guests_above is not None:
+        df = df[df["guests"] > int(guests_above)]; used["guests_above"] = guests_above
+    if guests_equal is not None:
+        df = df[df["guests"] == int(guests_equal)]; used["guests_equal"] = guests_equal
+    if len(df) == 0:
+        return {"filters_used": used, "nights": 0, "result": None, "note": "no night matches"}
+    if by_day:
+        per_day = df.groupby("day_name")["guests"].agg(metric if metric != "count" else "size")
+        per_day = {d: round(float(v), 1) for d, v in per_day.sort_values(ascending=False).items()}
+        return {"filters_used": used, "metric": metric, "by_day": per_day,
+                "highest_day": next(iter(per_day)), "lowest_day": list(per_day)[-1]}
+    value = len(df) if metric == "count" else getattr(df["guests"], metric)()
+    return {"filters_used": used, "metric": metric, "nights": len(df), "result": round(float(value), 1)}
+
+
 def save_rule(text: str) -> dict:
     return RuleMemory().add(text, source="manager")
 
 
-TOOLS = {"predict_night": predict_night, "ask_data": ask_data, "save_rule": save_rule}
+TOOLS = {"predict_night": predict_night, "stats": stats, "ask_data": ask_data, "save_rule": save_rule}
 
 # Descriptions sent to the model (OpenAI tool format, understood by llama.cpp --jinja)
 SCHEMAS = [
@@ -89,8 +128,25 @@ SCHEMAS = [
             "biryani_special": {"type": "boolean", "description": "Sunday biryani special"}},
             "required": ["day"]}}},
     {"type": "function", "function": {
+        "name": "stats",
+        "description": "PREFERRED for questions about past nights. Computes mean/sum/count/max/min of guests "
+                       "after filtering. Examples: average on Fridays in Sept 2026 -> metric=mean, year=2026, "
+                       "month=9, day_name=Friday. Total guests in Oct 2026 -> metric=sum, year=2026, month=10. "
+                       "Nights with more than 20 guests in 2026 -> metric=count, year=2026, guests_above=20. "
+                       "Busiest weekday in 2025 -> metric=mean, year=2025, by_day=true.",
+        "parameters": {"type": "object", "properties": {
+            "metric": {"type": "string", "enum": ["mean", "sum", "count", "max", "min"]},
+            "year": {"type": "integer"}, "month": {"type": "integer", "description": "1-12"},
+            "day_name": {"type": "string", "enum": DAYS},
+            "rain": {"type": "boolean"}, "biryani": {"type": "boolean"},
+            "before_holiday": {"type": "boolean", "description": "night before a public holiday"},
+            "start_of_month": {"type": "boolean"},
+            "guests_above": {"type": "integer"}, "guests_equal": {"type": "integer"},
+            "by_day": {"type": "boolean", "description": "one result per weekday + highest/lowest day"}},
+            "required": ["metric"]}}},
+    {"type": "function", "function": {
         "name": "ask_data",
-        "description": "Answer a question about past nights by writing pandas code. The table is `df` "
+        "description": "Only if `stats` cannot answer: write pandas code. The table is `df` "
                        "with columns date (datetime), weekday (0=Monday..6=Sunday), day_name "
                        "('Monday'..'Sunday'), guests, staff, rain (0/1), temp_c, wind_kmh, biryani (0/1), "
                        "before_holiday (0/1), start_of_month (0/1). "

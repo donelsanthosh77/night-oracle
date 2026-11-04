@@ -1,0 +1,6 @@
+{
+  "question": "How many nights before a public holiday were there in 2025?",
+  "use_tools": false,
+  "steps": [],
+  "answer": "In 2025, there were **7** public holidays in the United States.\n\nHere is the breakdown by the number of nights falling on those days:\n\n*   **New Year's Day** (Jan 1): 1 night\n*   **Martin Luther King Jr. Day** (Jan 20): 1 night\n*   **Washington's Birthday** (Feb 17): 1 night\n*   **Memorial Day** (May 26): 1 night\n*   **Independence Day** (July 4): 1 night\n*   **Labor Day** (Sep 1): 1 night\n*   **Veterans Day** (Nov 11): 1 night\n*   **Thanksgiving Day** (Nov 28): 1 night\n\nTotal: **7 nights** (assuming the holiday itself counts as the \"night before\" the next day off, or simply the night of the holiday). If you meant \"how many *nights leading up to* the holiday,\" that is an infinite number. Based on standard holiday counts, the answer is 7."
+}

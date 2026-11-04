@@ -1,0 +1,33 @@
+{
+  "question": "Which day of the week had the lowest average number of guests in 2025?",
+  "use_tools": true,
+  "steps": [
+    {
+      "tool": "stats",
+      "args": {
+        "metric": "mean",
+        "year": 2025,
+        "by_day": true
+      },
+      "result": {
+        "filters_used": {
+          "year": 2025
+        },
+        "metric": "mean",
+        "by_day": {
+          "Saturday": 26.6,
+          "Friday": 25.5,
+          "Monday": 24.7,
+          "Thursday": 24.6,
+          "Wednesday": 22.9,
+          "Sunday": 21.4,
+          "Tuesday": 15.6
+        },
+        "highest_day": "Saturday",
+        "lowest_day": "Tuesday"
+      }
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Tuesday had the lowest average number of guests in 2025 with 15.6 guests."
+}
