@@ -1,0 +1,48 @@
+{
+  "question": "Owner says: the day before a public holiday is always full",
+  "use_tools": true,
+  "via": "mcp",
+  "steps": [
+    {
+      "tool": "save_rule",
+      "args": {
+        "text": "the day before a public holiday is always full"
+      },
+      "result": {
+        "text": "the day before a public holiday is always full",
+        "source": "manager",
+        "added": "2026-11-04"
+      },
+      "seconds": 1.93
+    },
+    {
+      "tool": "predict_night",
+      "args": {
+        "day": "2026-11-04"
+      },
+      "result": {
+        "date": "2026-11-04",
+        "weekday": "Wednesday",
+        "reasons": [
+          "start of the month"
+        ],
+        "expected_guests": 22,
+        "range_90": [
+          18,
+          26
+        ],
+        "seats": 30,
+        "staff_plan_for_expected": {
+          "kitchen": 3,
+          "service": 1,
+          "total": 4
+        },
+        "chance_more_than_20_guests_percent": 84,
+        "call_third_cook": true
+      },
+      "seconds": 1.98
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Tonight (Wednesday, Nov 4) has 22 expected guests with a 90% range of 18-26. The staff plan is 3 kitchen and 1 server, and the third cook should be called."
+}

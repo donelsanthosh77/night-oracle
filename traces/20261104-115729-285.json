@@ -1,0 +1,21 @@
+{
+  "question": "Owner says: Tuesday is quiet",
+  "use_tools": true,
+  "via": "mcp",
+  "steps": [
+    {
+      "tool": "save_rule",
+      "args": {
+        "text": "Tuesday is quiet"
+      },
+      "result": {
+        "text": "Tuesday is quiet",
+        "source": "manager",
+        "added": "2026-11-04"
+      },
+      "seconds": 2.48
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Rule saved. Tonight is Wednesday, 2026-11-04. Would you like a prediction for tonight?"
+}

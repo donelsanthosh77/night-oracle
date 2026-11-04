@@ -25,11 +25,11 @@ Answer in 2-4 short sentences, using only numbers returned by the tools.
 SYSTEM_NO_TOOLS = "You are the shift assistant of a small restaurant. Today is {today}. Answer briefly."
 
 
-def chat(messages: list, use_tools: bool) -> dict:
+def chat(messages: list, use_tools: bool, schemas: list | None = None) -> dict:
     body = {"model": config.LLM_MODEL, "messages": messages, "temperature": config.TEMPERATURE,
             "chat_template_kwargs": {"enable_thinking": False}}
     if use_tools:
-        body["tools"] = tools.SCHEMAS
+        body["tools"] = schemas or tools.SCHEMAS
     r = requests.post(config.LLM_URL, json=body, timeout=300)
     r.raise_for_status()
     return r.json()["choices"][0]["message"]
@@ -39,8 +39,15 @@ def strip_think(text: str) -> str:
     return re.sub(r"<think>.*?</think>", "", text or "", flags=re.S).strip()
 
 
-def ask(question: str, use_tools: bool = True, max_steps: int = 6, guard: bool = True) -> dict:
-    """One question -> one answer. Returns the answer and the full trace (saved to traces/)."""
+def ask(question: str, use_tools: bool = True, max_steps: int = 6, guard: bool = True,
+        via_mcp: bool = False) -> dict:
+    """One question -> one answer. Returns the answer and the full trace (saved to traces/).
+    via_mcp=True: the tools are listed and called through the MCP server instead of directly."""
+    if via_mcp:
+        from oracle import mcp_client
+        schemas, caller = mcp_client.list_schemas(), mcp_client.call
+    else:
+        schemas, caller = tools.SCHEMAS, tools.call
     today = date.today()
     if use_tools:
         system = SYSTEM.format(today=today.isoformat(), weekday=today.strftime("%A"),
@@ -48,11 +55,12 @@ def ask(question: str, use_tools: bool = True, max_steps: int = 6, guard: bool =
     else:
         system = SYSTEM_NO_TOOLS.format(today=today.isoformat())
     messages = [{"role": "system", "content": system}, {"role": "user", "content": question}]
-    tool_outputs, trace = [], {"question": question, "use_tools": use_tools, "steps": []}
+    tool_outputs, trace = [], {"question": question, "use_tools": use_tools,
+                                 "via": "mcp" if via_mcp else "direct", "steps": []}
 
     answer = None
     for _ in range(max_steps):
-        msg = chat(messages, use_tools)
+        msg = chat(messages, use_tools, schemas)
         messages.append(msg)
         calls = msg.get("tool_calls") or []
         if not calls:
@@ -60,8 +68,10 @@ def ask(question: str, use_tools: bool = True, max_steps: int = 6, guard: bool =
             break
         for c in calls:
             args = json.loads(c["function"]["arguments"] or "{}")
-            out = tools.call(c["function"]["name"], args)
-            trace["steps"].append({"tool": c["function"]["name"], "args": args, "result": out})
+            t0 = time.time()
+            out = caller(c["function"]["name"], args)
+            trace["steps"].append({"tool": c["function"]["name"], "args": args, "result": out,
+                                   "seconds": round(time.time() - t0, 2)})
             tool_outputs.append(json.dumps(out))
             messages.append({"role": "tool", "tool_call_id": c.get("id", ""),
                              "content": json.dumps(out)})
@@ -91,10 +101,11 @@ def ask(question: str, use_tools: bool = True, max_steps: int = 6, guard: bool =
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-tools", action="store_true")
+    ap.add_argument("--mcp", action="store_true", help="call the tools through the MCP server")
     a = ap.parse_args()
     print("Night Oracle - type a question (empty line to quit)")
     while (q := input("> ").strip()):
-        t = ask(q, use_tools=not a.no_tools)
+        t = ask(q, use_tools=not a.no_tools, via_mcp=a.mcp)
         for s in t["steps"]:
             print(f"  [tool] {s['tool']}({s['args']}) -> {json.dumps(s['result'])[:200]}")
         print(t["answer"])

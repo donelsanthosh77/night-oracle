@@ -27,6 +27,16 @@ python -m pytest -q                # all tests (no model needed)
 python -m oracle.agent             # chat: "How busy is Sunday with the biryani special?", "Owner says: Tuesday is quiet"
 ```
 
+### Web interface (optional, not a block)
+
+```bash
+streamlit run app.py               # opens http://localhost:8501
+```
+
+Shows the whole chain live: question → Qwen → harness → MCP server → tool → guard → answer, with the
+arguments Qwen chose and the result our code computed. Switches: tools on/off, through MCP or direct, guard on/off.
+Same from the terminal: `python -m oracle.agent --mcp`.
+
 Evidence for each building block (and the command that reproduces it): see [EVIDENCE.md](EVIDENCE.md).
 
 ## Layout
@@ -41,6 +51,8 @@ Evidence for each building block (and the command that reproduces it): see [EVID
 | `oracle/guard.py` | number guard + safe-code checker (block 3) |
 | `oracle/tools.py` | tools the model calls (block 1) |
 | `oracle/mcp_server.py` | same tools over MCP (block 2) |
+| `oracle/mcp_client.py` | lets our harness call the tools through MCP |
+| `app.py` | Streamlit interface (not a block) |
 | `oracle/agent.py` | the loop: Qwen ↔ tools ↔ guard, traces saved in `traces/` |
 | `bench/` | known-answer tasks, model alone vs with tools (block 9) |
 | `ai_log/` | AI-use log (R3) |

@@ -1,0 +1,36 @@
+{
+  "question": "If weather or biryani are not given, call predict_night anyway with the defaults and say which assumption you made.",
+  "use_tools": true,
+  "via": "mcp",
+  "steps": [
+    {
+      "tool": "predict_night",
+      "args": {
+        "day": "2026-11-04"
+      },
+      "result": {
+        "date": "2026-11-04",
+        "weekday": "Wednesday",
+        "reasons": [
+          "start of the month"
+        ],
+        "expected_guests": 22,
+        "range_90": [
+          18,
+          26
+        ],
+        "seats": 30,
+        "staff_plan_for_expected": {
+          "kitchen": 3,
+          "service": 1,
+          "total": 4
+        },
+        "chance_more_than_20_guests_percent": 84,
+        "call_third_cook": true
+      },
+      "seconds": 1.8
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Tonight (2026-11-04) is expected to have 22 guests, with a 90% range of 18 to 26. I assumed normal weather and no Biryani special, but the system automatically flagged this as the start of the month. Since there's an 84% chance of exceeding 20 guests, the plan calls for a third cook."
+}

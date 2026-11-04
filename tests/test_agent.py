@@ -6,7 +6,7 @@ from oracle import agent
 
 def fake_model(replies):
     replies = iter(replies)
-    return lambda messages, use_tools: next(replies)
+    return lambda messages, use_tools, schemas=None: next(replies)
 
 
 def tool_call(name, args):
@@ -36,3 +36,14 @@ def test_invented_number_is_blocked_twice(monkeypatch):
 
 def test_thinking_is_stripped():
     assert agent.strip_think("<think>hmm 42</think>Done.") == "Done."
+
+
+def test_same_answer_through_mcp(monkeypatch):
+    """The harness can call the tools through the MCP server: same result as a direct call."""
+    direct = agent.tools.stats("mean", year=2025, by_day=True)
+    monkeypatch.setattr(agent, "chat", fake_model([
+        tool_call("stats", {"metric": "mean", "year": 2025, "by_day": True}),
+        {"role": "assistant", "content": f"The busiest day was {direct['highest_day']}."}]))
+    t = agent.ask("Busiest day in 2025?", via_mcp=True)
+    assert t["via"] == "mcp"
+    assert t["steps"][0]["result"] == direct

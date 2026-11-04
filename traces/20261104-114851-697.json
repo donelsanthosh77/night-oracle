@@ -1,0 +1,38 @@
+{
+  "question": "How busy is next Sunday with the biryani special?",
+  "use_tools": true,
+  "via": "mcp",
+  "steps": [
+    {
+      "tool": "predict_night",
+      "args": {
+        "day": "2026-11-08",
+        "biryani_special": true
+      },
+      "result": {
+        "date": "2026-11-08",
+        "weekday": "Sunday",
+        "reasons": [
+          "start of the month",
+          "biryani special"
+        ],
+        "expected_guests": 27,
+        "range_90": [
+          23,
+          30
+        ],
+        "seats": 30,
+        "staff_plan_for_expected": {
+          "kitchen": 3,
+          "service": 1,
+          "total": 4
+        },
+        "chance_more_than_20_guests_percent": 100,
+        "call_third_cook": true
+      },
+      "seconds": 1.67
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Next Sunday (2026-11-08) is expected to have 27 guests, with a 90% range of 23 to 30. Because it is the start of the month and features the biryani special, the third cook will be called."
+}

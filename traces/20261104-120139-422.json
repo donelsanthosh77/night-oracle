@@ -1,0 +1,8 @@
+{
+  "question": "What house rules do you know?",
+  "use_tools": true,
+  "via": "mcp",
+  "steps": [],
+  "guard_first_try": [],
+  "answer": "I know two house rules: Tuesday is quiet, and the day before a public holiday is always full."
+}

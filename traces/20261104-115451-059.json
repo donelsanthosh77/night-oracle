@@ -1,0 +1,36 @@
+{
+  "question": "hi will there be custumers tody ",
+  "use_tools": true,
+  "via": "mcp",
+  "steps": [
+    {
+      "tool": "predict_night",
+      "args": {
+        "day": "2026-11-04"
+      },
+      "result": {
+        "date": "2026-11-04",
+        "weekday": "Wednesday",
+        "reasons": [
+          "start of the month"
+        ],
+        "expected_guests": 22,
+        "range_90": [
+          18,
+          26
+        ],
+        "seats": 30,
+        "staff_plan_for_expected": {
+          "kitchen": 3,
+          "service": 1,
+          "total": 4
+        },
+        "chance_more_than_20_guests_percent": 84,
+        "call_third_cook": true
+      },
+      "seconds": 1.84
+    }
+  ],
+  "guard_first_try": [],
+  "answer": "Yes, there will be customers today. We expect about 22 guests, with a 90% range between 18 and 26. Since it's the start of the month, we will call the third cook."
+}

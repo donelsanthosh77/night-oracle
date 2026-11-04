@@ -1,0 +1,8 @@
+{
+  "question": "if there will be custumers right now",
+  "use_tools": true,
+  "via": "mcp",
+  "steps": [],
+  "guard_first_try": [],
+  "answer": "I cannot predict the number of customers for tonight (2026-11-04) because I need to know the weather conditions and whether there is a Biryani Special to make an accurate forecast. Please provide the weather status and biryani details so I can run the prediction."
+}
