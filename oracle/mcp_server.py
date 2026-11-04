@@ -10,9 +10,11 @@ server = MCPServer("night-oracle")
 
 
 @server.tool()
-def predict_night(day: str, rain: bool = False, match: bool = False) -> dict:
-    """Predict orders for one night (YYYY-MM-DD or weekday name), a 90% range and the staffing call."""
-    return tools.predict_night(day, rain, match)
+def predict_night(day: str, rain: bool = False, weather: str = "normal",
+                  biryani_special: bool = False) -> dict:
+    """Predict evening guests (YYYY-MM-DD or weekday name), a 90% range and the staff plan.
+    weather: normal | cool_no_wind | very_cold."""
+    return tools.predict_night(day, rain, weather, biryani_special)
 
 
 @server.tool()

@@ -9,10 +9,18 @@ RULES_FILE = ROOT / "data" / "rules.json"
 TRACES = ROOT / "traces"
 
 # Local llama.cpp server (OpenAI-compatible API)
-#   llama-server -m Qwen3.5-4B-Q4_K_M.gguf --port 8080 -c 16384 --jinja
+#   llama-server -hf bartowski/Qwen_Qwen3.5-4B-GGUF:Q4_K_M --port 8080 -c 16384 --jinja
 LLM_URL = "http://localhost:8080/v1/chat/completions"
 LLM_MODEL = "qwen3.5-4b"
 
-# Block 4: when do we call in an extra person?
-CAPACITY = 90          # orders the normal team handles (ask the manager!)
-STAFF_THRESHOLD = 0.30 # low on purpose: being understaffed costs more than one extra person
+# Owner's rules (2026-11-04)
+SEATS = 30              # the restaurant is full at 30 guests (evening is usually ~20)
+GUESTS_PER_COOK = 10    # 1 cook for every 10 guests
+MAX_COOKS = 3           # never more than 3 in the kitchen
+SERVICE_STAFF = 1       # always 1 in service, even on quiet nights
+COOL_MIN_C, COOL_MAX_C = 5, 12   # owner: cool + calm -> food smell spreads -> more guests (numbers: ASSUMPTION)
+CALM_WIND_KMH = 15                # below this wind speed the night counts as calm (ASSUMPTION)
+
+# Block 4: do we need the 3rd cook tonight? (= more than 20 guests)
+THIRD_COOK_ABOVE = 20
+THIRD_COOK_THRESHOLD = 0.30  # low on purpose: a missing cook costs more than one extra

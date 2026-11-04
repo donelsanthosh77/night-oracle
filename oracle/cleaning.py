@@ -4,6 +4,9 @@ import json
 import pandas as pd
 
 from oracle import config
+from oracle.calendar_fr import before_holiday
+
+DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
 def clean(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
@@ -20,44 +23,47 @@ def clean(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     n = len(df); df = df.dropna(subset=["date"])
     step("parse_dates", n, "two date formats in the export; unreadable dates dropped")
 
-    # 2. orders stored as text with spaces
-    df["orders"] = pd.to_numeric(df["orders"].astype(str).str.strip(), errors="coerce")
-    n = len(df); df = df.dropna(subset=["orders"])
-    step("orders_to_number", n, "empty order counts cannot be guessed, dropped")
+    # 2. guests stored as text with spaces
+    df["guests"] = pd.to_numeric(df["guests"].astype(str).str.strip(), errors="coerce")
+    n = len(df); df = df.dropna(subset=["guests"])
+    step("guests_to_number", n, "empty guest counts cannot be guessed, dropped")
 
-    # 3. refund lines are not nights
-    n = len(df); df = df[df["orders"] >= 0]
-    step("drop_refunds", n, "negative orders are refund corrections, not a night")
-
-    # 4. exact duplicates (the till sometimes exports a line twice)
+    # 3. exact duplicates (the till sometimes exports a line twice)
     n = len(df); df = df.drop_duplicates()
     step("drop_duplicates", n, "same line exported twice")
 
-    # 5. RULE NOT IN THE FILE (from the manager): a closed day is not a 0-order day
-    n = len(df); df = df[df["note"].fillna("") != "closed"]
-    step("drop_closed_days", n, "manager: closed days must not count as quiet nights")
+    # 4. RULE NOT IN THE FILE (from the owner): the restaurant is full at 30 guests,
+    #    so more than 30 is a typing error (e.g. 250 for 25), not a busy night.
+    n = len(df); df = df[(df["guests"] >= 0) & (df["guests"] <= config.SEATS)]
+    step("drop_impossible_counts", n,
+         f"owner: full at {config.SEATS} guests, so larger numbers are typos")
 
-    # 6. one row per date (keep the last export of that day)
+    # 5. one row per date (keep the last export of that day)
     n = len(df); df = df.sort_values("date").drop_duplicates("date", keep="last")
     step("one_row_per_date", n, "two different lines for one date: keep the last export")
 
-    df["event"] = df["event"].fillna("")
     df["weekday"] = df["date"].dt.weekday
-    df["orders"] = df["orders"].astype(int)
+    df["biryani"] = (df["special"].fillna("") == "biryani").astype(int)
+    df["before_holiday"] = df["date"].map(lambda d: int(before_holiday(d.date())))
+    df["start_of_month"] = (df["date"].dt.day <= 10).astype(int)
+    df["day_name"] = df["weekday"].map(lambda i: DAYS[i])  # names, so the model can't mix up 5 and Friday
+    df["guests"] = df["guests"].astype(int)
     log["rows_out"] = len(df)
-    return df.reset_index(drop=True)[["date", "weekday", "orders", "staff", "rain", "event"]], log
+    cols = ["date", "weekday", "day_name", "guests", "staff", "rain", "temp_c", "wind_kmh",
+            "biryani", "before_holiday", "start_of_month"]
+    return df.reset_index(drop=True)[cols], log
 
 
 def load_clean() -> pd.DataFrame:
     if not config.CLEAN_SALES.exists():
         run()
-    return pd.read_csv(config.CLEAN_SALES, parse_dates=["date"], keep_default_na=False)
+    return pd.read_csv(config.CLEAN_SALES, parse_dates=["date"])
 
 
 def run():
     raw = pd.read_csv(config.RAW_SALES, dtype=str, keep_default_na=False, na_values=[])
     raw = raw.replace("", None)
-    for c in ("staff", "rain"):
+    for c in ("staff", "rain", "temp_c", "wind_kmh"):
         raw[c] = pd.to_numeric(raw[c], errors="coerce")
     df, log = clean(raw)
     config.CLEAN_SALES.parent.mkdir(parents=True, exist_ok=True)

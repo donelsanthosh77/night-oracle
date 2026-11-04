@@ -1,66 +1,72 @@
 [
   {
-    "q": "How many orders did we have on 2026-10-31?",
-    "answer": 109,
+    "q": "How many guests did we have on 2026-10-31?",
+    "answer": 30,
     "type": "number",
     "tol": 0
   },
   {
-    "q": "What was the average number of orders on Fridays in 2026-09? Round to 1 decimal.",
-    "answer": 97.8,
+    "q": "What was the average number of guests on Fridays in 2026-09? Round to 1 decimal.",
+    "answer": 23.5,
     "type": "number",
     "tol": 0.5
   },
   {
-    "q": "How many orders in total in 2026-09?",
-    "answer": 1949,
+    "q": "How many guests in total in 2026-09?",
+    "answer": 608,
     "type": "number",
     "tol": 0
   },
   {
-    "q": "What was the average number of orders on Fridays in 2026-10? Round to 1 decimal.",
-    "answer": 99.8,
+    "q": "What was the average number of guests on Fridays in 2026-10? Round to 1 decimal.",
+    "answer": 27.6,
     "type": "number",
     "tol": 0.5
   },
   {
-    "q": "How many orders in total in 2026-10?",
-    "answer": 2017,
+    "q": "How many guests in total in 2026-10?",
+    "answer": 712,
     "type": "number",
     "tol": 0
   },
   {
-    "q": "Which weekday had the highest average orders in 2025?",
+    "q": "Which day of the week had the highest average number of guests in 2025?",
     "answer": "Saturday",
     "type": "text"
   },
   {
-    "q": "How many match nights were there in 2025?",
-    "answer": 19,
+    "q": "Which day of the week had the lowest average number of guests in 2025?",
+    "answer": "Tuesday",
+    "type": "text"
+  },
+  {
+    "q": "How many nights were completely full (30 guests) in 2025?",
+    "answer": 43,
     "type": "number",
     "tol": 0
   },
   {
-    "q": "What was the busiest single night in 2025 (number of orders)?",
-    "answer": 141,
-    "type": "number",
-    "tol": 0
-  },
-  {
-    "q": "On rainy Sundays in 2025, what was the average number of orders? Round to 1 decimal.",
-    "answer": 51.8,
+    "q": "In 2025, what was the average number of guests on Sundays WITH the biryani special? Round to 1 decimal.",
+    "answer": 27.0,
     "type": "number",
     "tol": 0.5
   },
   {
-    "q": "How many nights had more than 90 orders in 2026?",
-    "answer": 68,
+    "q": "In 2025, what was the average number of guests on Sundays WITHOUT the biryani special? Round to 1 decimal.",
+    "answer": 16.2,
+    "type": "number",
+    "tol": 0.5
+  },
+  {
+    "q": "How many nights before a public holiday were there in 2025?",
+    "answer": 10,
     "type": "number",
     "tol": 0
   },
   {
-    "q": "Which weekday had the lowest average orders in 2026?",
-    "answer": "Monday",
-    "type": "text"
+    "q": "How many nights had more than 20 guests (3 cooks needed) in 2026?",
+    "answer": 208,
+    "type": "number",
+    "tol": 0
   }
 ]

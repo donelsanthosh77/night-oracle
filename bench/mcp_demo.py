@@ -20,7 +20,7 @@ async def main():
             await session.initialize()
             listed = await session.list_tools()
             names = [t.name for t in listed.tools]
-            args = {"day": "Friday", "match": True}
+            args = {"day": "Sunday", "biryani_special": True}
             res = await session.call_tool("predict_night", args)
             text = res.content[0].text
             trace = {"tools_listed": names, "call": {"tool": "predict_night", "args": args},

@@ -18,20 +18,20 @@ def test_tool_numbers_pass(monkeypatch):
     pred = agent.tools.predict_night("Friday")
     monkeypatch.setattr(agent, "chat", fake_model([
         tool_call("predict_night", {"day": "Friday"}),
-        {"role": "assistant", "content": f"About {pred['expected_orders']} orders on Friday."}]))
+        {"role": "assistant", "content": f"About {pred['expected_guests']} guests on Friday."}]))
     t = agent.ask("How busy is Friday?")
     assert t["steps"][0]["tool"] == "predict_night"
     assert t["guard_first_try"] == []
-    assert str(pred["expected_orders"]) in t["answer"]
+    assert str(pred["expected_guests"]) in t["answer"]
 
 
 def test_invented_number_is_blocked_twice(monkeypatch):
     monkeypatch.setattr(agent, "chat", fake_model([
-        {"role": "assistant", "content": "Friday will be 987 orders, trust me."},
-        {"role": "assistant", "content": "OK: 987 orders."}]))
+        {"role": "assistant", "content": "Friday will be 987 guests, trust me."},
+        {"role": "assistant", "content": "OK: 987 guests."}]))
     t = agent.ask("How busy is Friday?")
     assert t["answer"].startswith("[blocked by guard")
-    assert t["blocked_answer"] == "OK: 987 orders."
+    assert t["blocked_answer"] == "OK: 987 guests."
 
 
 def test_thinking_is_stripped():
